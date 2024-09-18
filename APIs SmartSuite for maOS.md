@@ -17,6 +17,11 @@
 <p><strong>1. API para obter o token para autenticação nas APIs</strong></p>
 </blockquote>
 <p><strong>URL:</strong> ${BaseUri}/authentication</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized</p>
+</blockquote>
 <p>Em <strong>headers</strong>, adicionar o campo “<strong>origin</strong>”</p>
 <pre><code>headers = { 
     "origin": "agent"
@@ -27,6 +32,12 @@
 <p><strong>2. API para salvar dados de armazenamento/memória:</strong></p>
 </blockquote>
 <p><strong>URL:</strong> ${BaseUri}/insertstorage</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
 <p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
 <pre><code>headers = { 
     "authentication": "token_aqui"
@@ -101,6 +112,12 @@
 <p><strong>3. API para salvar dados históricos de armazenamento/memória:</strong></p>
 </blockquote>
 <p><strong>URL:</strong> ${BaseUri}/insertstoragehistory</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
 <p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
 <pre><code>headers = { 
     "authentication": "token_aqui"
@@ -143,6 +160,12 @@
 <p><strong>4. API para salvar dados de erros de sistema:</strong></p>
 </blockquote>
 <p><strong>URL:</strong> ${BaseUri}/insertbluescreen</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
 <p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
 <pre><code>headers = { 
     "authentication": "token_aqui"
@@ -190,9 +213,15 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>5. API para salvar dados de erros de sistema:</strong></p>
+<p><strong>5. API para salvar dados de inventário lógico:</strong></p>
 </blockquote>
 <p><strong>URL:</strong> ${BaseUri}/insertinventory</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
 <p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
 <pre><code>headers = { 
     "authentication": "token_aqui"
@@ -278,4 +307,21 @@
   }
 }
 </code></pre>
+<hr>
+<blockquote>
+<p><strong>6. API para salvar dados de erros de sistema:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/insertinventory</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
 
