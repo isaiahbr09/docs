@@ -62,7 +62,7 @@
 <blockquote>
 <p><strong>2. API para obter o token para autenticação nas APIs</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/authentication</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/authentication</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -77,7 +77,7 @@
 <blockquote>
 <p><strong>3. API para salvar dados de armazenamento/memória:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertstorage</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertstorage</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -157,7 +157,7 @@
 <blockquote>
 <p><strong>4. API para salvar dados históricos de armazenamento/memória:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertstoragehistory</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertstoragehistory</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -205,7 +205,7 @@
 <blockquote>
 <p><strong>5. API para salvar dados de erros de sistema:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertbluescreen</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertbluescreen</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -261,7 +261,7 @@
 <blockquote>
 <p><strong>6. API para salvar dados de inventário lógico:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertinventory</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertinventory</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -357,7 +357,7 @@
 <blockquote>
 <p><strong>7. API para salvar dados de status dos serviços:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertservices</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertservices</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -422,7 +422,7 @@ N/A</p>
 <blockquote>
 <p><strong>8. API para salvar dados de conectividade:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertconnectivity</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertconnectivity</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -481,7 +481,7 @@ N/A</p>
 <blockquote>
 <p><strong>9. API para salvar dados históricos de conectividade:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/inserthistoryconnectivity</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/inserthistoryconnectivity</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -540,7 +540,7 @@ N/A</p>
 <blockquote>
 <p><strong>10. API para salvar dados versão do agente:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertagentversion</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertagentversion</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -573,7 +573,7 @@ N/A</p>
 <blockquote>
 <p><strong>11. API para salvar dados de criptografia:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertcryptography</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertcryptography</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -622,7 +622,7 @@ N/A</p>
 <blockquote>
 <p><strong>12. API para salvar dados de performance do equipamento:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertperformance</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/insertperformance</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -679,7 +679,7 @@ N/A</p>
 <blockquote>
 <p><strong>12. API para salvar dados históricos de performance do equipamento:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/inserthistoryperformance</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/macos/inserthistoryperformance</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
