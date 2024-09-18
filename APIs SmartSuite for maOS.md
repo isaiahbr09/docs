@@ -720,22 +720,4 @@ N/A</p>
   }
 }
 </code></pre>
-<hr>
-<blockquote>
-<p><strong>13. API para salvar dados de geolocalização:</strong></p>
-</blockquote>
-<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/inserthistoryperformance</p>
-<blockquote>
-<p><strong>StatusCodes</strong><br>
-200: OK<br>
-401: Unauthorized<br>
-422: Unprocessable Entity</p>
-</blockquote>
-<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
-<pre><code>headers = { 
-    "authentication": "token_aqui"
-}
-</code></pre>
-<p>O campo BootPerformane, se for possível no macOS, deve ser calculado do tempo de pré-boot e pós-boot (depois de logar).</p>
-<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
 
