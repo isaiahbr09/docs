@@ -552,7 +552,7 @@ N/A</p>
     "authentication": "token_aqui"
 }
 </code></pre>
-<p>Atualmente estamos na versão 1.0.9.10.2024</p>
+<p>Atualmente estamos na versão <strong>1.0.9.10.2024</strong></p>
 <p>Campos disponíveis no <strong>Body (JSON):</strong></p>
 <pre><code>{
   "_ResourceGuid": {
