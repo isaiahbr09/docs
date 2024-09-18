@@ -569,4 +569,71 @@ N/A</p>
   }
 }
 </code></pre>
+<hr>
+<blockquote>
+<p><strong>11. API para salvar dados de criptografia:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertcryptography</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status da criptografia (bitlocker), se for possível/compátivel.</p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+  "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "EncryptionMethod": {
+    "type": "string",
+    "nullable": false
+  },
+  "ProtectionStatus": {
+    "type": "string",
+    "nullable": false
+  },
+  "VolumeStatus": {
+    "type": "string",
+    "nullable": false
+  },
+  "DriveID": {
+    "type": "string",
+    "nullable": false
+  },
+  "RecoveryKey": {
+    "type": "string",
+    "nullable": false
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>12. API para salvar dados de performance do equipamento:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertperformance</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status da criptografia (bitlocker), se for possível/compátivel.</p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
 
