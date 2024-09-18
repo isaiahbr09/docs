@@ -634,6 +634,63 @@ N/A</p>
     "authentication": "token_aqui"
 }
 </code></pre>
-<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status da criptografia (bitlocker), se for possível/compátivel.</p>
+<p>O campo BootPerformane, se for possível no macOS, deve ser calculado do tempo de pré-boot e pós-boot (depois de logar).</p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+  "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "ProcessorName": {
+    "type": "string",
+    "nullable": true
+  },
+  "NumberOfCores": {
+    "type": "string",
+    "nullable": true
+  },
+  "MaxClockSpeed": {
+    "type": "string",
+    "nullable": true
+  },
+  "CpuUsage": {
+    "type": "string",
+    "nullable": false
+  },
+  "RamUsage": {
+    "type": "string",
+    "nullable": false
+  },
+  "BootPerformance": {
+    "type": "string",
+    "nullable": false
+  },
+  "LastUpBootTime": {
+    "type": "DateTime",
+    "nullable": false
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>12. API para salvar dados de performance do equipamento:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/inserthistoryperformance</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>O campo BootPerformane, se for possível no macOS, deve ser calculado do tempo de pré-boot e pós-boot (depois de logar).</p>
 <p>Campos disponíveis no <strong>Body (JSON):</strong></p>
 
