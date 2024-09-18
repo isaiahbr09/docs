@@ -10,13 +10,59 @@
 <p><strong>1:</strong> As URLs tem de ser possível a alteração, devido a apontamentos de console de desenvolvimento, produção, e ambientes apartados.<br>
 <strong>2:</strong> Assim como as URLs, o tenant tem de ser possível a alteração.<br>
 <strong>3:</strong> O campo <strong>_ResourceGuid</strong> é um uuid v4.</p>
-<p><strong>Ambiente DEV (BaseUri):</strong> <a href="https://dvp.azurewebsites.net/api/v1/binary/save">https://dvp.azurewebsites.net/api/v1/binary/save</a><br>
+<p><strong>Ambiente DEV (BaseUri):</strong> <a href="https://dvp.azurewebsites.net/">https://dvp.azurewebsites.net/</a><br>
 <strong>ID Tenant InnovaTech:</strong> 1</p>
 <hr>
 <blockquote>
-<p><strong>1. API para obter o token para autenticação nas APIs</strong></p>
+<p><strong>1. API para obter as features ativas:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/authentication</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/features/get/{tenant_id_aqui}</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Resultado:</p>
+<pre><code>{
+    "script_powershell": true,
+    "script_wmi": false,
+    "script_native": false,
+    "checkpoint_client": true,
+    "checkpoint_ssl": false,
+    "fortclient_vpn": false,
+    "cisco_client": false,
+    "cisco_portal": false,
+    "open_vpn": false,
+    "speedtest": true,
+    "altiris": false,
+    "crowdstrike": false,
+    "ivanti": false,
+    "sccm": true,
+    "sep": false,
+    "bit_defender": true,
+    "sentinel_one": false,
+    "trend_apex": false,
+    "windows_defender": false,
+    "google_wifi": true,
+    "server_a": "google.com.br.innova",
+    "server_b": "google.com.br.innova",
+    "server_c": "google.com.br.innova",
+    "monday": true,
+    "tuesday": true,
+    "wednesday": true,
+    "thursday": true,
+    "friday": true,
+    "saturday": false,
+    "sunday": false,
+    "days_collect": 100,
+    "proofpoint": true
+}
+</code></pre>
+<blockquote>
+<p><strong>2. API para obter o token para autenticação nas APIs</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/authentication</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -29,9 +75,9 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>2. API para salvar dados de armazenamento/memória:</strong></p>
+<p><strong>3. API para salvar dados de armazenamento/memória:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/insertstorage</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertstorage</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -109,9 +155,9 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>3. API para salvar dados históricos de armazenamento/memória:</strong></p>
+<p><strong>4. API para salvar dados históricos de armazenamento/memória:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/insertstoragehistory</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertstoragehistory</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -157,9 +203,9 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>4. API para salvar dados de erros de sistema:</strong></p>
+<p><strong>5. API para salvar dados de erros de sistema:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/insertbluescreen</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertbluescreen</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -213,9 +259,9 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>5. API para salvar dados de inventário lógico:</strong></p>
+<p><strong>6. API para salvar dados de inventário lógico:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/insertinventory</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertinventory</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -309,9 +355,9 @@
 </code></pre>
 <hr>
 <blockquote>
-<p><strong>6. API para salvar dados de erros de sistema:</strong></p>
+<p><strong>7. API para salvar dados de status dos serviços:</strong></p>
 </blockquote>
-<p><strong>URL:</strong> ${BaseUri}/insertinventory</p>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertservices</p>
 <blockquote>
 <p><strong>StatusCodes</strong><br>
 200: OK<br>
@@ -323,5 +369,204 @@
     "authentication": "token_aqui"
 }
 </code></pre>
+<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status dos serviços (se for possível), e enviar se está:</p>
+<p>Running<br>
+Stopped<br>
+N/A</p>
+<p>E se possível, caminho de instalação, e se a instalação foi encontrada.</p>
 <p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+   "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "ServiceEndpointState": {
+    "type": "string",
+    "nullable": true
+  },
+  "ServiceAvState": {
+    "type": "string",
+    "nullable": true
+  },
+  "ServiceDlpState": {
+    "type": "string",
+    "nullable": true
+  },
+  "ServiceVpnState": {
+    "type": "string",
+    "nullable": true
+  },
+  "InstallEndpointPath": {
+    "type": "string",
+    "nullable": true
+  },
+  "InstallAvPath": {
+    "type": "string",
+    "nullable": true
+  },
+  "InstallDlpPath": {
+    "type": "string",
+    "nullable": true
+  },
+  "InstallVpnPath": {
+    "type": "string",
+    "nullable": true
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>8. API para salvar dados de conectividade:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertconnectivity</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status da VPN, se está conectada ou não, e enviar:</p>
+<p>true/false</p>
+<p><em><strong>Se, os IPs obtidos na API de features para qualquer um do (server_a, server_b ou server_c), responder a ping, o teste de conectividade não deve ser realizado.</strong></em></p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+  "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "Download": {
+    "type": "string",
+    "nullable": false
+  },
+  "Upload": {
+    "type": "string",
+    "nullable": false
+  },
+  "PacketLoss": {
+    "type": "string",
+    "nullable": false
+  },
+  "Jitter": {
+    "type": "string",
+    "nullable": false
+  },
+  "Provider": {
+    "type": "string",
+    "nullable": false
+  },
+  "ConnectedVpn": {
+    "type": "bool",
+    "nullable": false
+  },
+  "LastDateRun": {
+    "type": "DateTime",
+    "nullable": false
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>9. API para salvar dados históricos de conectividade:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/inserthistoryconnectivity</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Baseado nos campos obtidos na API de features ativas, o agente deve verificar os status da VPN, se está conectada ou não, e enviar:</p>
+<p>true/false</p>
+<p><em><strong>Se, os IPs obtidos na API de features para qualquer um do (server_a, server_b ou server_c), responder a ping, o teste de conectividade não deve ser realizado.</strong></em></p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+  "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "Download": {
+    "type": "string",
+    "nullable": false
+  },
+  "Upload": {
+    "type": "string",
+    "nullable": false
+  },
+  "PacketLoss": {
+    "type": "string",
+    "nullable": false
+  },
+  "Jitter": {
+    "type": "string",
+    "nullable": false
+  },
+  "Provider": {
+    "type": "string",
+    "nullable": false
+  },
+  "ConnectedVpn": {
+    "type": "bool",
+    "nullable": false
+  },
+  "LastDateRun": {
+    "type": "DateTime",
+    "nullable": false
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
+<hr>
+<blockquote>
+<p><strong>10. API para salvar dados versão do agente:</strong></p>
+</blockquote>
+<p><strong>URL:</strong> ${BaseUri}/api/v1/binary/save/insertagentversion</p>
+<blockquote>
+<p><strong>StatusCodes</strong><br>
+200: OK<br>
+401: Unauthorized<br>
+422: Unprocessable Entity</p>
+</blockquote>
+<p>Em <strong>headers</strong>, adicionar o campo “<strong>authentication:</strong>”</p>
+<pre><code>headers = { 
+    "authentication": "token_aqui"
+}
+</code></pre>
+<p>Atualmente estamos na versão 1.0.9.10.2024</p>
+<p>Campos disponíveis no <strong>Body (JSON):</strong></p>
+<pre><code>{
+  "_ResourceGuid": {
+    "type": "string",
+    "nullable": false
+  },
+  "AgentVersion": {
+    "type": "string",
+    "nullable": false
+  },
+  "TenantId": {
+    "type": "int",
+    "nullable": false
+  }
+}
+</code></pre>
 
